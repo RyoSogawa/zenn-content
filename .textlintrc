@@ -15,10 +15,12 @@
           "か",
           "たり",
           "ても",
-          "と"
+          "と",
+          "に"
         ]
       },
-      "ja-no-successive-word": false
+      "ja-no-successive-word": false,
+      "ja-no-weak-phrase": false
     },
     "preset-ja-spacing": {
       "ja-space-between-half-and-full-width": {
@@ -32,7 +34,8 @@
     },
     "ja-technical-writing/ja-no-mixed-period": {
       "allowPeriodMarks": [
-        ":"
+        ":",
+        "、"
       ],
       "allowEmojiAtEnd": true
     }
