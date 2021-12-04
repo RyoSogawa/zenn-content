@@ -5,8 +5,8 @@
   "author": "RyoSogawa <koashimitekara.1122@gmail.com>",
   "private": true,
   "scripts": {
-    "new:a": "zenn new:article",
-    "new:b": "zenn new:book",
+    "new:a": "zenn new:article --slug sgw-",
+    "new:b": "zenn new:book --slug sgw-",
     "preview": "zenn preview",
     "lint:text": "textlint ./articles/**.*",
     "lint": "yarn lint:text",
