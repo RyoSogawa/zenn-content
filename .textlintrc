@@ -1,0 +1,40 @@
+{
+  "plugins": {
+    "@textlint/markdown": {
+      "extensions": [
+        ".md"
+      ]
+    }
+  },
+  "rules": {
+    "preset-ja-technical-writing": {
+      "no-exclamation-question-mark": false,
+      "no-doubled-joshi": {
+        "strict": false,
+        "allow": [
+          "か",
+          "たり",
+          "ても",
+          "と"
+        ]
+      },
+      "ja-no-successive-word": false
+    },
+    "preset-ja-spacing": {
+      "ja-space-between-half-and-full-width": {
+        "space": "always",
+        "exceptPunctuation": true
+      },
+      "ja-space-around-code": {
+        "before": true,
+        "after": true
+      }
+    },
+    "ja-technical-writing/ja-no-mixed-period": {
+      "allowPeriodMarks": [
+        ":"
+      ],
+      "allowEmojiAtEnd": true
+    }
+  }
+}

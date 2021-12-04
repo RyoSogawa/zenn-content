@@ -7,9 +7,18 @@
   "scripts": {
     "new:a": "zenn new:article",
     "new:b": "zenn new:book",
-    "preview": "zenn preview"
+    "preview": "zenn preview",
+    "lint:text": "textlint ./articles/**.*",
+    "lint": "yarn lint:text",
+    "format:text": "textlint ./articles/**.* --fix",
+    "format": "yarn format:text"
   },
   "dependencies": {
     "zenn-cli": "^0.1.94"
+  },
+  "devDependencies": {
+    "textlint": "^12.1.0",
+    "textlint-rule-preset-ja-spacing": "^2.2.0",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0"
   }
 }
