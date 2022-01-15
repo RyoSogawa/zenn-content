@@ -66,7 +66,7 @@ React.createElement(
 )
 ```
 
-こんな感じで、普段 HTML のように記述している JSX は裏で`React.createElement`を実行しています。
+こんな感じで、普段 HTML のように記述している JSX は裏で `React.createElement` を実行しています。
 
 こんな書き方では HTML の構造がとてもよく分からないので、JSX という糖衣構文を使って簡単に分かりやすく記述**させていただいている**のです。
 
