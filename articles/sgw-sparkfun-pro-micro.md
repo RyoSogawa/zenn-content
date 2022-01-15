@@ -3,7 +3,7 @@ title: "SparkFun Pro Microを使って自作キーボードをUSB-C化した記�
 emoji: "⌨️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["keyboard"]
-published: false
+published: true
 ---
 
 USB-C 対応の SparkFun Pro Micro を購入しセットアップするときに躓いたので、そのときの手順を記録します。
@@ -196,10 +196,13 @@ https://remap-keys.app/
 
 お疲れ様でした！🍵
 
+:::message alert
+ちなみにcocot49ではこのProMicroを使うとトラックボールが反応しなくなってしまうようです。  
+くれぐれも自己責任でお願いします！
+:::
 
-## 終わりに（余談）
-少し余談を。
 
+## 余談
 ### REMAPでのレイヤー切り替えキー
 REMAP を初めて使ったのですが、デフォルトで設定されているレイヤーキー用の、
 - `無変換 Layer(1)`
