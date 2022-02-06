@@ -19,7 +19,7 @@ USB-C 対応の SparkFun Pro Micro を購入しセットアップするときに
 
 https://twitter.com/sgw123456/status/1456984807389364224?s=20
 
-`cocot49` というこのキーボードは。
+`cocot46` というこのキーボードは。
 
 - 非分割
 - 40%
@@ -178,7 +178,7 @@ SparkFun Pro Micro はコンスルー対応（？）していて、Pro Micro 側
 
 次にファームウェアを書き込むために hex ファイルを用意します。
 
-※cocot49 は[ビルドガイド](https://github.com/aki27kbd/cocot46/blob/main/doc/buildguide.md#%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%82%A6%E3%82%A7%E3%82%A2)から。
+※cocot46 は[ビルドガイド](https://github.com/aki27kbd/cocot46/blob/main/doc/buildguide.md#%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%82%A6%E3%82%A7%E3%82%A2)から。
 
 1. QMK Toolbox の `Local file` の欄で同ファイルを選択
 2. `Auto-Flash` にチェックを入れて
@@ -197,7 +197,7 @@ https://remap-keys.app/
 お疲れ様でした！🍵
 
 :::message alert
-ちなみに cocot49 ではこの ProMicro を使うとトラックボールが反応しなくなってしまうようです。😭  
+ちなみに cocot46 ではこの ProMicro を使うとトラックボールが反応しなくなってしまうようです。😭  
 くれぐれも自己責任でお願いします！
 :::
 
@@ -219,7 +219,7 @@ REMAP を初めて使ったのですが、デフォルトで設定されてい�
 ### Macbookのキーボードをオフにする
 もともと外用にこのキーボードを購入したのですが、Macbook 上に乗っける尊師スタイルではキーボードが押されてしまうサイズ感でした。
 
-これも Karabiner の device 設定で cocot49 を接続したら Macbook のキーボードがオフになるように設定することで自動的に切り替わるように設定できました。
+これも Karabiner の device 設定で cocot46 を接続したら Macbook のキーボードがオフになるように設定することで自動的に切り替わるように設定できました。
 
 ![](https://storage.googleapis.com/zenn-user-upload/cba0bcc5fb9e-20211203.png)
 
