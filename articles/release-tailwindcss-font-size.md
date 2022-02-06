@@ -3,19 +3,19 @@ title: "TailwindCSSでフォントサイズをpxToRemでマニュアル指定す
 emoji: "💤"
 type: "tech" # tech: 技術記事 / idea: アイデア 
 topics: ["npm","tailwindcss","plugin"]
-published: false
+published: true
 ---
 
 ## 作ったもの
 https://www.npmjs.com/package/tailwindcss-font-size
 
 ## 使い方
-以下の2種類のクラス名が有効になります。
+以下の 2 種類のクラス名が有効になります。
 - `fsz-{n}px`
 - `fsz-{n}ptr`
 
-`px`は指定した数値をそのままピクセルで指定。
-`ptr`は`px to rem`の略で、指定した数値をピクセルからremに変換したフォントサイズがあたります。
+`px` は指定した数値をそのままピクセルで指定。
+`ptr` は `px to rem` の略で、指定した数値をピクセルから rem に変換したフォントサイズがあたります。
 
 ```html
 <!--ベースフォントサイズが16pxの場合-->
@@ -24,7 +24,7 @@ https://www.npmjs.com/package/tailwindcss-font-size
 ```
 
 ### 設定
-以下の3項目が設定できます。
+以下の 3 項目が設定できます。
 
 ```js:tailwind.config.js
 module.exports = {
@@ -44,7 +44,7 @@ module.exports = {
 
 ## 解決したかったこと
 
-もともとTailwindCSSが好きでよく使っているのですが、少しかゆいのがフォントサイズの指定。
+もともと TailwindCSS が好きでよく使っているのですが、少しかゆいのがフォントサイズの指定。
 
 https://tailwindcss.com/docs/font-size
 
@@ -56,10 +56,10 @@ https://tailwindcss.com/docs/font-size
 - lg
 - xl~9xl
 
-で基本的に問題は無いのですが、ことWeb制作でデザイナーのかたからいただくデザインではだいたいもっと細かく指定されています。   
-（感覚的には特に10px~20pxの間は全部使われてることが多い）
+で基本的に問題は無いのですが、こと Web 制作でデザイナーのかたからいただくデザインではだいたいもっと細かく指定されています。   
+（感覚的には特に 10px ~ 20px の間はだいたい使われている。）
 
-そうなってくると別途クラスを用意するか、JITで個別指定することになるのですが、`rem`を使うことが多いWebのフォントサイズを都度指定するのは結構めんどくさい。。！
+そうなってくると別途クラスを用意するか、JIT で個別指定することになるのですが、`rem` を使うことが多い Web のフォントサイズを都度指定するのは結構めんどくさい。。！
 
 ```html
 <!-- TailwindCSS JIT -->
@@ -71,7 +71,7 @@ https://tailwindcss.com/docs/font-size
 
 ## ※プラグインのインストールが面倒な方へ
 以下のコードでもだいたい同じことができます。
-`100`/`10`/`16`の箇所を適宜変更してください。
+`100`/`10`/`16` の箇所を適宜変更してください。
 
 ```js:tailwind.config.js
 const fontSize = Object.fromEntries(
@@ -99,5 +99,5 @@ module.exports = {
 
 https://github.com/RyoSogawa/tailwindcss-font-size
 
-IssueやPR歓迎です。
-使ってみて便利でしたらスターをいただけると嬉しいです!⭐️
+Issue や PR 歓迎です。
+使ってみて便利でしたらスター⭐️をいただけると嬉しいです！
