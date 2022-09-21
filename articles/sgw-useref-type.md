@@ -6,11 +6,11 @@ topics: ["react", "hooks"]
 published: false
 ---
 
-useRefには2種類の用途がある。
+useRef には 2 種類の用途がある。
 https://ja.reactjs.org/docs/hooks-reference.html#useref
 
 
-1. DOMの参照
+1. DOM の参照
 2. 値の保持
 
 である。
@@ -32,27 +32,27 @@ const ref4 = useRef<HTMLDivElement>(null);
 ```
 
 上記の通り、
-- 1, 2, 3 は`MutableRefObject`
-- 4 は`RefObject`
+- 1, 2, 3 は `MutableRefObject`
+- 4 は `RefObject`
 
 型と推論される。
 
-この`RefObject`がDOMの参照に使うものであり、その他が値の保持に使うものである。
+この `RefObject` が DOM の参照に使うものであり、その他が値の保持に使うものである。
 
 
 ## 特徴1
-Mutableでない`RefObject`型のrefは値を代入することができない。
+Mutable でない `RefObject` 型の ref は値を代入できない。
 
 ```ts
 ref4.current = null; 
 // Cannot assign to 'current' because it is a read-only property.
 ```
 
-DOMの参照に使うrefをユーザーが変更する必要はないためreadonlyであることは自然だろう。
+DOM の参照に使う ref をユーザーが変更する必要はないため readonly であるのが自然だろう。
 
 ## 特徴2
 
-初期値に`null`を指定していない 1,3 のパターンはDOM要素のrefに指定するとエラーになる
+初期値に `null` を指定していない 1,3 のパターンは DOM 要素の ref に指定するとエラーになる。
 
 ```tsx
 <div ref={ref1} />
@@ -63,18 +63,18 @@ DOMの参照に使うrefをユーザーが変更する必要はないためreado
 ```
 
 ## まとめ
-DOM要素の参照に使う場合はちょっと面倒だが
+DOM 要素の参照に使う場合はちょっと面倒だが、
 ```ts
 const ref = useRef<HTMLDivElement>(null);
 ```
 のように、
 
-- Element型の指定
-- 初期値に`null`
+- Element 型の指定
+- 初期値に `null`
 
 を指定しよう！
 
-※最後に今回の記事の内容をcodesandboxに作成したので実際に触ってみたいときにどうぞ。
+※最後に今回の記事の内容を codesandbox に作成したので実際に触ってみたいときにどうぞ。
 @[codesandbox](https://codesandbox.io/embed/useref-test-jsi8rb?fontsize=14&hidenavigation=1&theme=dark)
 
 ## 参考文献
