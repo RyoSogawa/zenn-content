@@ -37,7 +37,7 @@ const ref4 = useRef<HTMLDivElement>(null);
 
 型と推論される。
 
-この `RefObject` が DOM の参照に使うものであり、その他が値の保持に使うものである。
+4 の `RefObject` が DOM の参照に使うものであり、その他が値の保持に使うものである。
 
 
 ## 特徴1
@@ -63,7 +63,7 @@ DOM の参照に使う ref をユーザーが変更する必要はないため r
 ```
 
 ## まとめ
-DOM 要素の参照に使う場合はちょっと面倒だが、
+DOM 要素の参照に使う場合は、
 ```ts
 const ref = useRef<HTMLDivElement>(null);
 ```
@@ -74,8 +74,8 @@ const ref = useRef<HTMLDivElement>(null);
 
 を指定しよう！
 
-※最後に今回の記事の内容を codesandbox に作成したので実際に触ってみたいときにどうぞ。
-@[codesandbox](https://codesandbox.io/embed/useref-test-jsi8rb?fontsize=14&hidenavigation=1&theme=dark)
+※今回の記事の内容を codesandbox に作成したので実際に触りたいときにどうぞ。
+@[codesandbox](https://codesandbox.io/embed/useref-test-jsi8rb?fontsize=14&hidenavigation=1&theme=dark&view=editor)
 
 ## 参考文献
 https://zenn.dev/berlysia/articles/624bc1aaffda58#%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9%E5%A4%89%E6%95%B0%E4%BB%A3%E3%82%8F%E3%82%8A%E3%81%AB%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D
