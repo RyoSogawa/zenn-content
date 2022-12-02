@@ -14,7 +14,7 @@
     "format": "yarn format:text"
   },
   "dependencies": {
-    "zenn-cli": "^0.1.94"
+    "zenn-cli": "^0.1.133"
   },
   "devDependencies": {
     "textlint": "^12.1.0",
