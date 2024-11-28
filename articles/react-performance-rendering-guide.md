@@ -52,7 +52,7 @@ const Component = () => {
 ## 2. stateを持つコンポーネントを小さくする
 state を持つコンポーネントが再レンダリングの対象となるので、state を持つコンポーネントを小さくすることで再レンダリングの範囲を抑制できます。
 なるべく末端の子コンポーネントに state を持たせるようにするか、部分的にコンポーネントを分割するのも効果的です。
-state のスコープが狭くなり、凝集度が高まるケースも多いです。
+結果的に state のスコープが狭くなり、凝集度が高まるケースも多いです。
 
 ```tsx
 // before
@@ -100,7 +100,6 @@ const Component = () => {
 const Component = () => {
   const [count, setCount] = useState(0);
   const handleClick = useCallback(() => setCount(count + 1), [count]);
-
   const bigNumber = useMemo(() => heavyCalc(count), [count]);
   
   return (
