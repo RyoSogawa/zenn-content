@@ -54,8 +54,7 @@ state を持つコンポーネントが再レンダリングの対象となる�
 なるべく末端の子コンポーネントに state を持たせるようにするか、部分的にコンポーネントを分割するのも効果的です。
 結果的に state のスコープが狭くなり、凝集度が高まるケースも多いです。
 
-```tsx
-// before
+```tsx:before
 const Component = () => {
   const [count, setCount] = useState(0);
   const handleClick = () => setCount(count + 1);
@@ -68,8 +67,7 @@ const Component = () => {
   );
 };
 ```
-```tsx
-// after
+```tsx:after
 // stateを別コンポーネントに分割
 const CountUpButton = () => {
   const [count, setCount] = useState(0);
@@ -91,7 +89,7 @@ const Component = () => {
 ## 3. useMemo / useCallback
 `useMemo` および `useCallback` は eslint のお陰で deps 漏れを検知出来るため安全に導入しやすくておすすめです。
 
-関数コンポーネント内で定義される関数は再レンダリング時に再生成されるため、`useCallback` は積極的に導入していいでしょう。
+特に関数コンポーネント内で定義される関数は再レンダリング時に再生成されるため、`useCallback` は積極的に導入していいでしょう。
 
 ただし、`useMemo` については導入が逆効果になるケースもあります。
 シンプルなプリミティブ値であればメモ化する恩恵があまりないので、算出処理が複雑な場合に限定して導入すると良いでしょう。
@@ -133,8 +131,8 @@ const Component = () => {
   const [user, setUser] = useState({name: 'John'});
   const handleClick = useCallback(() => setUser({name: 'Paul'}), []);
 
-  const deepComparedDeps = useDeepCompareMemoizeDeps([user]);
-  const heavyValue = useMemo(() => heavyCalc(user), deepComparedDeps);
+  const memoizedDeps = useDeepCompareMemoizeDeps([user]);
+  const heavyValue = useMemo(() => heavyCalc(user), memoizedDeps);
   
   return (
     <div>
