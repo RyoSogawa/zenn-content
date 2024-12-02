@@ -5,6 +5,11 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ['React', '再レンダリング', 'パフォーマンス']
 published: false
 ---
+こんにちは！
+any株式会社でプロダクトチームに所属しているVPoE/エンジニアの十川です！
+
+この記事は、any Product Team Advent Calendar2024　6日目の記事になります。
+https://qiita.com/advent-calendar/2024/anyinc
 
 この記事では、React のプロジェクトを実装するにあたり、余計な再レンダリングを抑制することでパフォーマンスを向上させるための施策を個人的な優先度順に紹介します。
 PRレビューの観点等に参考にしていただければ幸いです。
@@ -213,3 +218,4 @@ const HeavyComponent = React.memo((props) => {
 
 その他の方法はコストが低く、将来的に `React.memo` を導入する際のコストも下げることが出来るため、早い段階から取り入れていってもよいかと思います。
 
+最後までお読みいただきありがとうございました！
