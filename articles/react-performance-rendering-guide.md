@@ -4,6 +4,7 @@ emoji: "🚤"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ['React', '再レンダリング', 'パフォーマンス']
 published: false
+publication_name: any_dev
 ---
 こんにちは！
 any株式会社でプロダクトチームに所属しているVPoE/エンジニアの十川です！
