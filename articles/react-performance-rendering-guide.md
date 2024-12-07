@@ -136,7 +136,7 @@ const Component = () => {
   const handleClick = useCallback(() => setUser({name: 'Paul'}), []);
 
   const memoizedUser = useDeepCache(user);
-  const heavyValue = useMemo(() => heavyCalc(user), [memoizedUser]);
+  const heavyValue = useMemo(() => heavyCalc(memoizedUser), [memoizedUser]);
   
   return (
     <div>
