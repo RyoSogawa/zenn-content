@@ -118,18 +118,15 @@ const Component = () => {
 
 deps にオブジェクト型が指定されるパターンでは意図せぬ再生成が発生することがあります。
 その場合は deepEqual などを使って比較することで対処できます。
+※コメントをいただき修正しました。
 
 ```tsx
 import equal from 'fast-deep-equal';
 
-const useDeepCompareMemoizeDeps = <T extends DependencyList[number]>(
-  deps: T[]
-) => {
-  const ref = useRef<T[]>([]);
-  if (
-    deps.some((dependency, index) => !equal(dependency, ref.current[index]))
-  ) {
-    ref.current = deps;
+const useDeepCache = <T extends DependencyList[number]>(dependency: T) => {
+  const ref = useRef<T>(dependency);
+  if (!equal(dependency, ref.current)) {
+    ref.current = dependency;
   }
   return ref.current;
 };
@@ -138,8 +135,8 @@ const Component = () => {
   const [user, setUser] = useState({name: 'John'});
   const handleClick = useCallback(() => setUser({name: 'Paul'}), []);
 
-  const memoizedDeps = useDeepCompareMemoizeDeps([user]);
-  const heavyValue = useMemo(() => heavyCalc(user), memoizedDeps);
+  const memoizedUser = useDeepCache(user);
+  const heavyValue = useMemo(() => heavyCalc(user), [memoizedUser]);
   
   return (
     <div>
