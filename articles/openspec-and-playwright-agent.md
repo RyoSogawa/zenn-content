@@ -16,13 +16,15 @@ https://qiita.com/advent-calendar/2025/anyinc
 どこもかしこも AI 一色な 2025 年でしたが、AI を使った開発に自分は正直まだもう一歩馴染んでいません。
 キーボードを叩くことそのものが好きな自分としては、AI と会話する文章ではなくコードそのものを書きたい気持ちもあります。
 
-そんな中、テストをすることがあまり好きではない僕はなんとかテストを AI に任せられないかと考えていました。
+そんな中、テストをすることに大きな手間と負担を感じていた僕はなんとかテストを AI に任せられないかと考えていました。
 そこで、OpenSpec と PlaywrightAgent を組み合わせて、仕様書の変更に伴うテストコードの更新を自動化できないか試してみることにします。
 
 ### 作成するアプリについて
 題材として、ちょうど作ろうと思っているものがあったのでそれを使います。
 ギターエフェクターである Zoom の MultiStomp シリーズのエフェクターは、MIDI コントローラーを接続すると内部の操作を MIDI メッセージで制御できるようになります。
 その設定を手軽に行うためのツールを実装してみます。
+
+※ 本記事で扱うツールは ZOOM 社が提供する公式ソフトウェアではなく、著者による個人開発の技術検証です。
 
 ## 開発手順
 ### OpenSpecを使った開発フロー
@@ -39,7 +41,7 @@ $ cd my-project
 $ openspec init
 ```
 
-利用する AI サービスを選択します。今回は ClaudeCode のみを選択しました。
+利用する AI サービスを選択します。今回は Claude Code のみを選択しました。
 すると以下のように表示されます。
 
 ```bash
@@ -64,7 +66,7 @@ Next steps - Copy these prompts to Claude Code:
 書かれている通り
 > Please read openspec/project.md and help me fill it out with details about my project, tech stack, and conventions
 
-と ClaudeCode に投げるとプロジェクトの概要を会話形式で確認されました。
+と Claude Code に投げるとプロジェクトの概要を会話形式で確認されました。
 
 ```bash
 ・プロジェクトの目的は何ですか？（例：ZOOM MultiStompをPC/スマホから制御するアプリ） → 自由入力
@@ -77,7 +79,7 @@ midi コントローラでマルチエフェクターの操作をするための
 生成された信号は文字列で表示され、ワンタッチでクリップボードにコピーできる
 指定できる操作は以下
 1〜6 番目のエフェクタの ON
-FO 52 00 6E 64 20 00 aa 00 01 00 00 00 00 F7
+F0 52 00 6E 64 20 00 aa 00 01 00 00 00 00 F7
 1〜6 番目のエフェクタの OFF
 F0 52 00 6E 64 20 00 aa 00 00 00 00 00 00 F7
 1〜6 番目のエフェクタを表示
@@ -182,7 +184,7 @@ F0 52 00 6E 64 20 00 64 01 aa 00 00 00 00 F7
 
 ここまでくれば開発を開始できそうです。
 
-ちなみに OpenSpec の init 時に ClaudeCode には以下のコマンドが作成されます。
+ちなみに OpenSpec の init 時に Claude Code には以下のコマンドが作成されます。
 ```bash
   /openspec:proposal     Scaffold a new OpenSpec change and validate strictly. (project)
   /openspec:apply        Implement an approved OpenSpec change and keep tasks in sync. (project)
@@ -236,7 +238,7 @@ PlaywrightAgent は主に以下の機能を提供します。
 
 まずは PlaywrightAgent/Playwright をインストールします。
 ```bash
-# ClaudeCode用のPlaywrightAgent
+# Claude Code用のPlaywrightAgent
 $ npx playwright init-agents --loop=claude
 $ pnpm create playwright
 ✔ Where to put your end-to-end tests? · e2e
