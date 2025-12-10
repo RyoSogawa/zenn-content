@@ -3,7 +3,8 @@ title: "OpenSpecで作成した仕様書を元にPlaywrightAgentにテストコ�
 emoji: "🕌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ['PlaywrightAgent', 'OpenSpec', 'E2Eテスト']
-published: false
+published: true
+published_at: 2025-12-13 07:00
 publication_name: any_dev
 ---
 
