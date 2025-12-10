@@ -9,25 +9,25 @@ publication_name: any_dev
 ---
 
 こんにちは！any 株式会社でプロダクトチームに所属しているエンジニアの十川です。
-この記事は、anyプロダクトチーム Advent Calendar 2025 シリーズ1 の 13 日目の記事になります。
+この記事は、any プロダクトチーム Advent Calendar 2025 シリーズ 1 の 13 日目の記事になります。
 https://qiita.com/advent-calendar/2025/anyinc
 
 ## はじめに
-どこもかしこもAI一色な2025年でしたが、AIを使った開発に自分は正直まだもう一歩馴染んでいません。
-キーボードを叩くことそのものが好きな自分としては、AIと会話する文章ではなくコードそのものを書きたい気持ちもあります。
+どこもかしこも AI 一色な 2025 年でしたが、AI を使った開発に自分は正直まだもう一歩馴染んでいません。
+キーボードを叩くことそのものが好きな自分としては、AI と会話する文章ではなくコードそのものを書きたい気持ちもあります。
 
-そんな中、テストをすることがあまり好きではない僕はなんとかテストをAIに任せられないかと考えていました。
-そこで、OpenSpecとPlaywrightAgentを組み合わせて、仕様書の変更に伴うテストコードの更新を自動化できないか試してみることにします。
+そんな中、テストをすることがあまり好きではない僕はなんとかテストを AI に任せられないかと考えていました。
+そこで、OpenSpec と PlaywrightAgent を組み合わせて、仕様書の変更に伴うテストコードの更新を自動化できないか試してみることにします。
 
 ### 作成するアプリについて
 題材として、ちょうど作ろうと思っているものがあったのでそれを使います。
-ギターエフェクターであるZoomのMultiStompシリーズのエフェクターは、MIDIコントローラーを接続すると内部の操作をMIDIメッセージで制御できるようになります。
+ギターエフェクターである Zoom の MultiStomp シリーズのエフェクターは、MIDI コントローラーを接続すると内部の操作を MIDI メッセージで制御できるようになります。
 その設定を手軽に行うためのツールを実装してみます。
 
 ## 開発手順
 ### OpenSpecを使った開発フロー
 
-まずOpenSpecをインストールします。
+まず OpenSpec をインストールします。
 
 https://github.com/Fission-AI/OpenSpec
 
@@ -39,7 +39,7 @@ $ cd my-project
 $ openspec init
 ```
 
-利用するAIサービスを選択します。今回はClaudeCodeのみを選択しました。
+利用する AI サービスを選択します。今回は ClaudeCode のみを選択しました。
 すると以下のように表示されます。
 
 ```bash
@@ -64,7 +64,7 @@ Next steps - Copy these prompts to Claude Code:
 書かれている通り
 > Please read openspec/project.md and help me fill it out with details about my project, tech stack, and conventions
 
-とClaudeCodeに投げるとプロジェクトの概要を会話形式で確認されました。
+と ClaudeCode に投げるとプロジェクトの概要を会話形式で確認されました。
 
 ```bash
 ・プロジェクトの目的は何ですか？（例：ZOOM MultiStompをPC/スマホから制御するアプリ） → 自由入力
@@ -73,16 +73,16 @@ Next steps - Copy these prompts to Claude Code:
 ```
 
 :::details プロジェクトの目的に関する返答内容
-midiコントローラでマルチエフェクターの操作をするための信号を生成するアプリ
+midi コントローラでマルチエフェクターの操作をするための信号を生成するアプリ
 生成された信号は文字列で表示され、ワンタッチでクリップボードにコピーできる
 指定できる操作は以下
-1〜6番目のエフェクタのON
+1〜6 番目のエフェクタの ON
 FO 52 00 6E 64 20 00 aa 00 01 00 00 00 00 F7
-1〜6番目のエフェクタのOFF
+1〜6 番目のエフェクタの OFF
 F0 52 00 6E 64 20 00 aa 00 00 00 00 00 00 F7
-1〜6番目のエフェクタを表示
+1〜6 番目のエフェクタを表示
 F0 52 00 6E 64 20 00 64 01 aa 00 00 00 00 F7
-aa の箇所に00〜05の値が入り、エフェクタの番号を指定する
+aa の箇所に 00〜05 の値が入り、エフェクタの番号を指定する
 これらを複数個自由に組み合わせられる
 
 開発環境について
@@ -92,9 +92,9 @@ typescript
 vite
 shadcn-ui
 tailwindcss
-を使ったシンプルなクライアントwebアプリ
+を使ったシンプルなクライアント web アプリ
 
-デザインはダークモードのSPを前提に
+デザインはダークモードの SP を前提に
 :::
 
 これらの情報を元に `openspec/project.md` が生成されました。
@@ -182,7 +182,7 @@ F0 52 00 6E 64 20 00 64 01 aa 00 00 00 00 F7
 
 ここまでくれば開発を開始できそうです。
 
-ちなみにOpenSpecのinit時にClaudeCodeには以下のコマンドが作成されます。
+ちなみに OpenSpec の init 時に ClaudeCode には以下のコマンドが作成されます。
 ```bash
   /openspec:proposal     Scaffold a new OpenSpec change and validate strictly. (project)
   /openspec:apply        Implement an approved OpenSpec change and keep tasks in sync. (project)
@@ -195,7 +195,7 @@ F0 52 00 6E 64 20 00 64 01 aa 00 00 00 00 F7
  /openspec:proposal プロジェクトのベースを実装 
 ```
 
-すると`/openspec/changes/[project-name]`にいくつかの資料が作成されます。
+すると `/openspec/changes/[project-name]` にいくつかの資料が作成されます。
 
 ```
 openspec/changes/scaffold-project-base
@@ -208,7 +208,7 @@ openspec/changes/scaffold-project-base
 └── tasks.md
 ```
 
-そして最後に`npx openspec validate`が実行され、それぞれの資料がチェックされます。 
+そして最後に `npx openspec validate` が実行され、それぞれの資料がチェックされます。 
 
 内容をチェックし、問題なければ以下のコマンドで実装を開始します。
 
@@ -225,16 +225,16 @@ openspec/changes/scaffold-project-base
 これで一連の操作が完了です。
 
 ### PlaywrightAgentを使ったE2Eテストの実装
-続いてPlaywrightAgentを使ってE2Eテストを実装してみます。
+続いて PlaywrightAgent を使って E2E テストを実装してみます。
 https://playwright.dev/docs/test-agents
 
-PlaywrightAgentは主に以下の機能を提供します。
+PlaywrightAgent は主に以下の機能を提供します。
 要はテストを自動生成・修復してくれるエージェント群です。
 - 🎭 planner ... explores the app and produces a Markdown test plan
 - 🎭 generator ... transforms the Markdown plan into the Playwright Test files
 - 🎭 healer ... executes the test suite and automatically repairs failing tests
 
-まずはPlaywrightAgent/Playwrightをインストールします。
+まずは PlaywrightAgent/Playwright をインストールします。
 ```bash
 # ClaudeCode用のPlaywrightAgent
 $ npx playwright init-agents --loop=claude
@@ -244,7 +244,7 @@ $ pnpm create playwright
 ✔ Install Playwright browsers (can be done manually via 'pnpm exec playwright install')? (Y/n) · true
 ```
 
-生成されたagentを使ってテスト計画書を作成します。
+生成された agent を使ってテスト計画書を作成します。
 ```
 > @agent-playwright-test-planner 現在のアプリ全体のテスト計画書を作成してください
 ...
@@ -277,37 +277,37 @@ $ pnpm create playwright
 ```
 
 たくさん生成されました。しかし実行するとパスしないものもあります。
-Healerに修復をお願いしましょう。
+Healer に修復をお願いしましょう。
 ```
 > @agent-playwright-test-healer
 ```
 
 プロンプトを入れずに実行してみましたが、修復を始めてくれました。
-主にセレクタの修正とtestの設定を行ってくれたようです。
+主にセレクタの修正と test の設定を行ってくれたようです。
 
 ## 仕様変更
 **ここからが本題です。**
 
-機能を追加していきます。OpenSpecでドキュメントを書いてもらい(proposal)、実装(apply)してもらいました。
+機能を追加していきます。OpenSpec でドキュメントを書いてもらい(proposal)、実装(apply)してもらいました。
 
 こんなとき、当然ですがテストも変更が必要です。
-従来であれば手動でテストコードを修正する必要がありますが、PlaywrightAgentを使えば自動でやってくれます。
+従来であれば手動でテストコードを修正する必要がありますが、PlaywrightAgent を使えば自動でやってくれます。
 
-そして、OpenSpecを使って作成された仕様書を渡すことで、テスト計画書を簡単に更新してもらえるかもしれません。
+そして、OpenSpec を使って作成された仕様書を渡すことで、テスト計画書を簡単に更新してもらえるかもしれません。
 そのまま投げてみましょう。
 
 ```
 > @agent-playwright-test-planner @openspec/changes/add-tuner-volume-tempo の仕様書を元にテスト計画書を更新してください 
 ```
 
-このタイミングでテストファイルが大きくなりそうだったので分割をしてもらいました。これもplaywright-agentがやってくれます。
+このタイミングでテストファイルが大きくなりそうだったので分割をしてもらいました。これも playwright-agent がやってくれます。
 
 ```
 > @agent-playwright-test-planner 今後も仕様が変更されていくことを考えるとテストプランのファイルを分割したほうがよいですか？
 ```
 
 テストプランファイルを分割したので既存のテストコードもなにか手を入れたほうがいいかもしれません。
-generatorに質問したところ、以下のように返答がありました。
+generator に質問したところ、以下のように返答がありました。
 
 ```
 > @agent-playwright-test-generator specs/test-plans/** に各テストファイルを分割しました。テストファイルの構造は変更しますか？
@@ -340,15 +340,15 @@ generatorに質問したところ、以下のように返答がありました�
 
 
 ## おわりに
-以上、OpenSpecとPlaywrightAgentを組み合わせた開発フローの紹介でした。
+以上、OpenSpec と PlaywrightAgent を組み合わせた開発フローの紹介でした。
 
-実際に生成されたツールとリポジトリは以下になります。もしZOOMのMultiStompシリーズをお使いの方がいればぜひ使ってみてください。
+実際に生成されたツールとリポジトリは以下になります。もし ZOOM の MultiStomp シリーズをお使いの方がいればぜひ使ってみてください。
 https://github.com/RyoSogawa/zoom-multistomp-commander
 
 https://zoom-multistomp-commander.vercel.app/
 
-Playwright Agentのようなツールを使うことで、今後は日本語のドキュメントとしてテスト仕様を管理し、テストコードは自動生成・修復してもらう流れが作れるかもしれません。
+Playwright Agent のようなツールを使うことで、今後は日本語のドキュメントとしてテスト仕様を管理し、テストコードは自動生成・修復してもらう流れが作れるかもしれません。
 
-PlaywrightAgentを使う上でのtips等も今後まとめていきたいと思います。
+PlaywrightAgent を使う上での tips 等も今後まとめていきたいと思います。
 
 最後までお読みいただきありがとうございました！
